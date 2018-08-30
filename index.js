@@ -3,7 +3,7 @@ const app = express();
 
 // route handler in Express
 app.get('/', (req, res) => {
-    res.send({ hi: 'there' });
+    res.send({ bye: 'buddy' });
 });
 
 // means in the production use the provided port
