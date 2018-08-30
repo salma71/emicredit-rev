@@ -1,10 +1,14 @@
-const express = require('express')
+const express = require('express');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 const app = express();
 
-// route handler in Express
-app.get('/', (req, res) => {
-    res.send({ bye: 'buddy' });
-});
+// clientId:  
+// clientSectet:  
+
+passport.use(new GoogleStrategy());
+
 
 // means in the production use the provided port
 // otherwise in the development env use port 5000
