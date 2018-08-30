@@ -6,4 +6,7 @@ app.get('/', (req, res) => {
     res.send({ hi: 'there' });
 });
 
-app.listen(5000)
+// means in the production use the provided port
+// otherwise in the development env use port 5000
+const PORT = process.env.PORT || 5000
+app.listen(PORT)
