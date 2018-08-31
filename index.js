@@ -1,7 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const keys = require('./config/keys')
+
+// reorder the rwquiring file can cause a DB error when running the server
+require('./models/user')
 require('./services/passport')
+
 // const authRoutes = require('./routes/authRoutes')
 
 mongoose.connect(keys.mongoURI)
