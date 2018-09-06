@@ -23,19 +23,17 @@ passport.use(
       callbackURL: '/auth/google/callback', // relative path can cause 400 error
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        // this is a promise
-        if (existingUser) {
-          // we already have a record of the profile ID
-          done(null, existingUser)
-        } else {
-          // make a new instance for the user
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user))
-        }
-      })
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id })
+
+      // this is a promise
+      if (existingUser) {
+        // we already have a record of the profile ID
+        return done(null, existingUser)
+        // make a new instance for the user
+        const user = await new User({ googleId: profile.id }).save()
+        done(null, user)
+      }
     }
   )
 )
