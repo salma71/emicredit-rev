@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-const Header = () => <h2>Header</h2>
-const DashBoard = () => <h2>dashboard</h2>
+import Header from './Header'
+const DashBoard = () => <h2>Dashboard</h2>
 const SurveyNew = () => <h2>surveyNew</h2>
 const Landing = () => <h2>Landing</h2>
 
@@ -11,8 +11,10 @@ const App = () => {
     <div>
       <BrowserRouter>
         <div>
+          <Header />
           <Route exact path='/' component={Landing} />
-          <Route path='/surveys' component={DashBoard} />
+          <Route exact path='/surveys' component={DashBoard} />
+          <Route path='/surveys/new' component={SurveyNew} />
         </div>
       </BrowserRouter>
     </div>
