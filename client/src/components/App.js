@@ -1,7 +1,22 @@
 import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+
+const Header = () => <h2>Header</h2>
+const DashBoard = () => <h2>dashboard</h2>
+const SurveyNew = () => <h2>surveyNew</h2>
+const Landing = () => <h2>Landing</h2>
 
 const App = () => {
-  return <div>Hi, There</div>
+  return (
+    <div>
+      <BrowserRouter>
+        <div>
+          <Route exact path='/' component={Landing} />
+          <Route path='/surveys' component={DashBoard} />
+        </div>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App
